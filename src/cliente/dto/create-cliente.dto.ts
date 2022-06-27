@@ -1,7 +1,8 @@
-import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsEmail, IsIdentityCard, IsInt, IsNotEmpty, IsString, Length, Min } from 'class-validator';
 
 export class CreateClienteDto {
   @IsString()
+  @Length(11, 11)
   @IsNotEmpty()
   cpf: string;
 
@@ -13,7 +14,8 @@ export class CreateClienteDto {
   @IsNotEmpty()
   email: string;
 
-  @IsNumber()
+  @IsInt()
+  @Min(18)
   @IsNotEmpty()
   idade: number;
 }

@@ -5,5 +5,5 @@ export class Cliente {
   nome: string;
   email: string;
   idade: number;
-  carrosAlugados: Carro[];
+  carrosAlugados: number[];
 }

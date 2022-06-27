@@ -1,9 +1,7 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsInt, IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
 import { Cliente } from '../../cliente/entities/cliente.entity';
 
 export class CreateCarroDto {
-  @IsNumber()
-  id: number;
 
   @IsString()
   @IsNotEmpty()
@@ -17,7 +15,8 @@ export class CreateCarroDto {
   @IsNotEmpty()
   modelo: string;
 
-  @IsNumber()
+  @IsInt()
+  @Min(2010)
   @IsNotEmpty()
   ano: number;
 

@@ -5,15 +5,15 @@ import { Cliente } from './entities/cliente.entity';
 
 @Injectable()
 export class ClienteService {
-  private clientes: Cliente[] = [];
+  public clientes: Cliente[] = [];
 
   create(createClienteDto: CreateClienteDto) {
-    const newIndex = this.clientes.push({
+    const newLength = this.clientes.push({
       ...createClienteDto,
       carrosAlugados: [],
     });
 
-    return this.clientes[newIndex];
+    return this.clientes[newLength-1];
   }
 
   findAll() {

@@ -6,20 +6,21 @@ import { Carro } from './entities/carro.entity';
 
 @Injectable()
 export class CarroService {
-  private carros: Carro[];
-
-  constructor(private readonly clienteService: ClienteService) {
-    this.carros = [];
-  }
+  public carros: Carro[] = [];
+  public nextId = 1;
 
   create(createCarroDto: CreateCarroDto) {
-    const newIndex = this.carros.push({ ...createCarroDto, locatario: null });
+    const newLength = this.carros.push({ 
+      id: this.nextId++,
+      ...createCarroDto,
+      locatario: null
+    });
 
-    return this.carros[newIndex];
+    return this.carros[newLength-1];
   }
 
   findAll() {
-    console.log(this.clienteService);
+    console.log(this.carros);
 
     return this.carros;
   }
