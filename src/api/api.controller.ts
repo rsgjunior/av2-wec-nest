@@ -13,6 +13,7 @@ import { UpdateCarroDto } from 'src/carro/dto/update-carro.dto';
 import { CreateClienteDto } from 'src/cliente/dto/create-cliente.dto';
 import { UpdateClienteDto } from 'src/cliente/dto/update-cliente.dto';
 import { ApiService } from './api.service';
+import { ApiBody } from '@nestjs/swagger';
 
 @Controller('api')
 export class ApiController {
@@ -40,6 +41,7 @@ export class ApiController {
   }
 
   @Put('/carro/:id')
+  @ApiBody({ type: [CreateCarroDto] })
   updateCarro(@Param('id') id: string, @Body() updateCarroDto: UpdateCarroDto) {
     console.log('updateCarro', { id }, { updateCarroDto });
     return this.apiService.updateCarro(+id, updateCarroDto);
@@ -71,6 +73,7 @@ export class ApiController {
   }
 
   @Put('/cliente/:cpf')
+  @ApiBody({ type: [CreateClienteDto] })
   updateCliente(
     @Param('cpf') cpf: string,
     @Body() updateClienteDto: UpdateClienteDto,

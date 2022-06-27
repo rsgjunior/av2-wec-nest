@@ -4,7 +4,7 @@ import { CarroController } from './carro.controller';
 import { ClienteService } from 'src/cliente/cliente.service';
 
 @Module({
-  controllers: [CarroController],
+  //controllers: [CarroController],
   providers: [CarroService, ClienteService],
 })
 export class CarroModule {}
